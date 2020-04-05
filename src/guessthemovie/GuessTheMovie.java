@@ -42,7 +42,7 @@ public class GuessTheMovie {
     {
         // guess the movie game up to 8 tries total !!
         // how to read a text file of movies and then fill an Array List with them
-        File file = new File("C:\\Users\\pkontekas\\Documents\\NetBeansProjects\\GuessTheMovie\\movie_list.txt");
+        File file = new File("movie_list.txt");
         Scanner scanFile = new Scanner(file);
         ArrayList<String> movieList = new ArrayList<>();
         while (scanFile.hasNext())
