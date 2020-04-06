@@ -41,6 +41,29 @@ public class GuessTheMovie {
             return movieList.get(rand.nextInt(movieList.size()));
         }
         
+        //original Arrays.toString was not good enough had to edit it to my needs
+        public static String customCharArrayToString(char[] a)
+        {
+            if (a == null)
+            {
+                return "null";
+            }
+            int iMax = a.length - 1;
+            if (iMax == -1)
+                return "[]";
+            StringBuilder b = new StringBuilder();
+            for (int i = 0; ; i++) 
+            {
+                b.append(a[i]);
+                if (i == iMax)
+                    return b.toString();
+                if (a[i]==' ')
+                    b.append("   ");
+                else
+                    b.append(" ");
+            }
+        }
+        
     public static void main(String[] args) throws FileNotFoundException
     {
         // guess the movie game up to 8 tries total !!
@@ -72,7 +95,7 @@ public class GuessTheMovie {
         Scanner scan = new Scanner(System.in);
         while ((Arrays.equals(movieCharArray,hiddenCharArray)==false) && (mistakeCount<8))
         {
-            System.out.println("You are guessing now :\n"+Arrays.toString(hiddenCharArray));
+            System.out.println("You are guessing now a movie with " + "words :\n" + customCharArrayToString(hiddenCharArray));
             System.out.print("You have guessed ( "+mistakeCount+" ) wrong letters: "+mistakes+"\n Guess a letter: ");
             char letter = Character.toUpperCase(scan.next().charAt(0));
             while (Validator.validateAbc(letter)==true)
@@ -87,11 +110,16 @@ public class GuessTheMovie {
             {
                 //add mistakes in a String with a , separation
                 if (mistakeCount==0)
+                {
                     mistakes = mistakes+letter;
-                else
-                    {mistakes = mistakes + " , " + letter;}
-                mistakeCount++;
-            }       
+                    mistakeCount++;
+                }
+                else if (!mistakes.contains(Character.toString(letter)))
+                    {
+                            mistakes = mistakes + " , " + letter;
+                            mistakeCount++;
+                    }
+            }
         }
         if (Arrays.equals(movieCharArray,hiddenCharArray))
             System.out.println("You Win!\n You have guessed "+title+" correctly.");
