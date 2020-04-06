@@ -109,8 +109,8 @@ public class GuessTheMovie {
                 }
                 else if (!mistakes.contains(Character.toString(letter)))
                     {
-                            mistakes = mistakes + " , " + letter;
-                            mistakeCount++;
+                        mistakes = mistakes + " , " + letter;
+                        mistakeCount++;
                     }
             }
         }
