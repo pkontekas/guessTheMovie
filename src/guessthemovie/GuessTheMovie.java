@@ -1,6 +1,7 @@
 package guessthemovie;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -13,7 +14,7 @@ public class GuessTheMovie {
      * @param args the command line arguments
      */
         static boolean checkContains(char guess, char[] origArr)
-                //check if the character guessed belongs in the character array of the selected movie
+        //check if the character guessed belongs in the character array of the selected movie
     {
         for (char x : origArr)
         {
@@ -22,8 +23,9 @@ public class GuessTheMovie {
         }
         return false;
     }
+        
         static void fillIn(char guessedChar, char[] newArr, char[] origArr)
-                //fill the empty character array with the character guessed wherever it is required
+        //fill the empty character array with the character guessed wherever it is required
         {
             for (int i=0; i<newArr.length; i++)
             {
@@ -31,14 +33,15 @@ public class GuessTheMovie {
                     newArr[i] = guessedChar;
             }
         }
+        
         static String getRandomMovie(ArrayList<String> movieList)
-                //get a random movie as a string from a String arraylist with all the available movies
+        //get a random movie as a string from a String arraylist with all the available movies
         {
             Random rand = new Random();
             return movieList.get(rand.nextInt(movieList.size()));
         }
         
-    public static void main(String[] args) throws Exception
+    public static void main(String[] args) throws FileNotFoundException
     {
         // guess the movie game up to 8 tries total !!
         // how to read a text file of movies and then fill an Array List with them
