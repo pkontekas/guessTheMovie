@@ -79,7 +79,10 @@ public class GuessTheMovie {
             else
             {
                 //add mistakes in a String with a , separation
-                mistakes = mistakes+letter+" , ";
+                if (mistakeCount==0)
+                    mistakes = mistakes+letter;
+                else
+                    {mistakes = mistakes + " , " + letter;}
                 mistakeCount++;
             }       
         }
