@@ -115,8 +115,8 @@ public class GuessTheMovie {
             }
         }
         if (Arrays.equals(movieCharArray,hiddenCharArray))
-            System.out.println("You Win!\n You have guessed "+title+" correctly.");
+            System.out.println("You Win!\n You have guessed ' "+title+" ' correctly.");
         else
-            System.out.println("You lost all your guesses !! Better luck next time!\nThe Movie you were trying to guess is "+title+"!!");
+            System.out.println("You lost all your guesses !! Better luck next time!\nThe Movie you were trying to guess is ' "+title+" ' !!");
     }
 }
