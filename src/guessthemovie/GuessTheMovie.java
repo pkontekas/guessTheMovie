@@ -74,8 +74,12 @@ public class GuessTheMovie {
         {
             System.out.println("You are guessing now :\n"+Arrays.toString(hiddenCharArray));
             System.out.print("You have guessed ( "+mistakeCount+" ) wrong letters: "+mistakes+"\n Guess a letter: ");
-            char letter = scan.next().charAt(0);
-            letter = Character.toUpperCase(letter);
+            char letter = Character.toUpperCase(scan.next().charAt(0));
+            while (Validator.validateAbc(letter)==true)
+            {
+                System.out.println("Wrong input please try again with only Alphabetic values!");
+                letter = Character.toUpperCase(scan.next().charAt(0));
+            }
             boolean check = checkContains(letter, movieCharArray);
             if (check==true)
                 fillIn(letter, hiddenCharArray, movieCharArray);
