@@ -69,13 +69,13 @@ public class GuessTheMovie {
         // guess the movie game up to 8 tries total !!
         // how to read a text file of movies and then fill an Array List with them
         File file = new File("movie_list.txt");
-        Scanner scanFile = new Scanner(file);
-        ArrayList<String> movieList = new ArrayList<>();
-        while (scanFile.hasNext())
-        {
-            movieList.add(scanFile.nextLine());
-        }
-        scanFile.close();         
+        ArrayList<String> movieList;
+            try (Scanner scanFile = new Scanner(file))
+            {
+                movieList = new ArrayList<>();
+                while (scanFile.hasNext())
+                    movieList.add(scanFile.nextLine());
+            }
         //select a random movie from the array list with a random method
         String title = getRandomMovie(movieList);
         title = title.toUpperCase();
