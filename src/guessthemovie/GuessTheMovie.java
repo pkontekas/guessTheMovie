@@ -42,28 +42,28 @@ public class GuessTheMovie {
         }
         
         //original Arrays.toString was not good enough had to edit it to my needs
-        public static String customCharArrayToString(char[] a)
+        public static String customCharArrayToString(char[] c)
         {
-            if (a == null)
+            if (c == null)
             {
                 return "null";
             }
-            int iMax = a.length - 1;
+            int iMax = c.length - 1;
             if (iMax == -1)
                 return "[]";
             StringBuilder b = new StringBuilder();
-            for (int i = 0; ; i++) 
+            for (int i = 0; ; i++)
             {
-                b.append(a[i]);
+                b.append(c[i]);
                 if (i == iMax)
                     return b.toString();
-                if (a[i]==' ')
+                if (c[i]==' ')
                     b.append("   ");
                 else
                     b.append(" ");
             }
         }
-        
+
     public static void main(String[] args) throws FileNotFoundException
     {
         // guess the movie game up to 8 tries total !!
@@ -125,5 +125,5 @@ public class GuessTheMovie {
             System.out.println("You Win!\n You have guessed "+title+" correctly.");
         else
             System.out.println("You lost all your guesses !! Better luck next time!\nThe Movie you were trying to guess is "+title+"!!");
-    }   
+    }
 }
