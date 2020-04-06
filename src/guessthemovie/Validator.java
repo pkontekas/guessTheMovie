@@ -1,5 +1,4 @@
 package guessthemovie;
-
 /**
   * @author pkontekas
  */

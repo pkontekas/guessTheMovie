@@ -16,7 +16,7 @@ public class GuessTheMovie {
         static void fillIn(char guessedChar, char[] newArr, char[] origArr)
         //fill the empty character array with the character guessed wherever it is required
         {
-            for (int i=0; i<newArr.length; i++)
+            for (int i = 0; i < newArr.length; i++)
             {
                 if (origArr[i] == guessedChar)
                     newArr[i] = guessedChar;
@@ -72,51 +72,51 @@ public class GuessTheMovie {
         char[] hiddenCharArray = title.toCharArray();
         int wordCount = 1;
         System.out.println("Welcome to the Guess the Movie game !!\nA Random Top Rated Movie from imdb was selected! Do you feel lucky???");
-        for (int characters=0; characters<hiddenCharArray.length; characters++)
+        for (int characters = 0; characters < hiddenCharArray.length; characters++)
         {
             //to account for the spaces between words, letter position characters are filled with underscores
-            if (movieCharArray[characters]==' ')
+            if (movieCharArray[characters] == ' ')
             {
-                hiddenCharArray[characters]= ' ';
+                hiddenCharArray[characters] = ' ';
                 wordCount++;
             }
             else
-                hiddenCharArray[characters]= '_';
+                hiddenCharArray[characters] = '_';
         }
-        int mistakeCount=0;
+        int mistakeCount = 0;
         String mistakes = "";
         Scanner scan = new Scanner(System.in);
-        while ((Arrays.equals(movieCharArray,hiddenCharArray)==false) && (mistakeCount<8))
+        while ((Arrays.equals(movieCharArray,hiddenCharArray) == false) && (mistakeCount < 8))
         {
             System.out.println("You are now guessing a movie with " + wordCount + " word(s) :\n" + customCharArrayToString(hiddenCharArray));
-            System.out.print("You have done ( "+mistakeCount+" ) mistakes so far: "+mistakes+"\n Guess a letter: ");
+            System.out.print("You have done ( " + mistakeCount + " ) mistakes so far: " + mistakes + "\n Guess a letter: ");
             char letter = Character.toUpperCase(scan.next().charAt(0));
-            while (Validator.validateAbc(letter)==true)
+            while (Validator.validateAbc(letter) == true)
             {
                 System.out.println("Wrong input please try again with only Alphabetic values!");
                 letter = Character.toUpperCase(scan.next().charAt(0));
             }
             boolean check = Validator.checkContains(letter, movieCharArray);
-            if (check==true)
+            if (check == true)
                 fillIn(letter, hiddenCharArray, movieCharArray);
             else
             {
                 //add mistakes in a String with a , separation
-                if (mistakeCount==0)
+                if (mistakeCount == 0)
                 {
-                    mistakes = mistakes+letter;
+                    mistakes += letter;
                     mistakeCount++;
                 }
                 else if (!mistakes.contains(Character.toString(letter)))
                     {
-                        mistakes = mistakes + " , " + letter;
+                        mistakes += " , " + letter;
                         mistakeCount++;
                     }
             }
         }
         if (Arrays.equals(movieCharArray,hiddenCharArray))
-            System.out.println("You Win!\n You have guessed ' "+title+" ' correctly.");
+            System.out.println("You Win!\n You have guessed ' " + title + " ' correctly.");
         else
-            System.out.println("You lost all your guesses !! Better luck next time!\nThe Movie you were trying to guess is ' "+title+" ' !!");
+            System.out.println("You lost all your guesses !! Better luck next time!\nThe Movie you were trying to guess is ' " + title + " ' !!");
     }
 }
