@@ -12,18 +12,7 @@ import java.util.Scanner;
 public class GuessTheMovie {
     /**
      * @param args the command line arguments
-     */ 
-        static boolean checkContains(char guess, char[] origArr)
-        //check if the character guessed belongs in the character array of the selected movie
-    {
-        for (char x : origArr)
-        {
-        if (x == guess)
-            return true;
-        }
-        return false;
-    }
-        
+     */         
         static void fillIn(char guessedChar, char[] newArr, char[] origArr)
         //fill the empty character array with the character guessed wherever it is required
         {
@@ -67,7 +56,7 @@ public class GuessTheMovie {
     public static void main(String[] args) throws FileNotFoundException
     {
         // guess the movie game up to 8 tries total !!
-        // how to read a text file of movies and then fill an Array List with them
+        // how to read a text file of movies and then fill a String Array List with movies
         File file = new File("movie_list.txt");
         ArrayList<String> movieList;
             try (Scanner scanFile = new Scanner(file))
@@ -99,7 +88,7 @@ public class GuessTheMovie {
         Scanner scan = new Scanner(System.in);
         while ((Arrays.equals(movieCharArray,hiddenCharArray)==false) && (mistakeCount<8))
         {
-            System.out.println("You are now guessing a movie with " + wordCount + " words :\n" + customCharArrayToString(hiddenCharArray));
+            System.out.println("You are now guessing a movie with " + wordCount + " word(s) :\n" + customCharArrayToString(hiddenCharArray));
             System.out.print("You have guessed ( "+mistakeCount+" ) wrong letters: "+mistakes+"\n Guess a letter: ");
             char letter = Character.toUpperCase(scan.next().charAt(0));
             while (Validator.validateAbc(letter)==true)
@@ -107,7 +96,7 @@ public class GuessTheMovie {
                 System.out.println("Wrong input please try again with only Alphabetic values!");
                 letter = Character.toUpperCase(scan.next().charAt(0));
             }
-            boolean check = checkContains(letter, movieCharArray);
+            boolean check = Validator.checkContains(letter, movieCharArray);
             if (check==true)
                 fillIn(letter, hiddenCharArray, movieCharArray);
             else
