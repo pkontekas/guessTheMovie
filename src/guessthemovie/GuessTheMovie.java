@@ -89,7 +89,7 @@ public class GuessTheMovie {
         while ((Arrays.equals(movieCharArray,hiddenCharArray)==false) && (mistakeCount<8))
         {
             System.out.println("You are now guessing a movie with " + wordCount + " word(s) :\n" + customCharArrayToString(hiddenCharArray));
-            System.out.print("You have guessed ( "+mistakeCount+" ) wrong letters: "+mistakes+"\n Guess a letter: ");
+            System.out.print("You have done ( "+mistakeCount+" ) mistakes so far: "+mistakes+"\n Guess a letter: ");
             char letter = Character.toUpperCase(scan.next().charAt(0));
             while (Validator.validateAbc(letter)==true)
             {
