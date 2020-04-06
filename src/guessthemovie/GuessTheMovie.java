@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class GuessTheMovie {
     /**
      * @param args the command line arguments
-     */
+     */ 
         static boolean checkContains(char guess, char[] origArr)
         //check if the character guessed belongs in the character array of the selected movie
     {
@@ -81,12 +81,16 @@ public class GuessTheMovie {
         title = title.toUpperCase();
         char[] movieCharArray = title.toCharArray();
         char[] hiddenCharArray = title.toCharArray();
+        int wordCount = 1;
         System.out.println("Welcome to the Guess the Movie game !!\nA Random Top Rated Movie from imdb was selected! Do you feel lucky???");
         for (int characters=0; characters<hiddenCharArray.length; characters++)
         {
-            //to account for the spaces between words
+            //to account for the spaces between words, letter position characters are filled with underscores
             if (movieCharArray[characters]==' ')
+            {
                 hiddenCharArray[characters]= ' ';
+                wordCount++;
+            }
             else
                 hiddenCharArray[characters]= '_';
         }
@@ -95,7 +99,7 @@ public class GuessTheMovie {
         Scanner scan = new Scanner(System.in);
         while ((Arrays.equals(movieCharArray,hiddenCharArray)==false) && (mistakeCount<8))
         {
-            System.out.println("You are guessing now a movie with " + "words :\n" + customCharArrayToString(hiddenCharArray));
+            System.out.println("You are now guessing a movie with " + wordCount + " words :\n" + customCharArrayToString(hiddenCharArray));
             System.out.print("You have guessed ( "+mistakeCount+" ) wrong letters: "+mistakes+"\n Guess a letter: ");
             char letter = Character.toUpperCase(scan.next().charAt(0));
             while (Validator.validateAbc(letter)==true)
